@@ -131,7 +131,7 @@ function Reserve(){
 
     if (ordercount >= 4 ) {
         let LoyaltyPointsEarned = ordercount*20;
-        sessionStorage.setItem("LoyaltyPoints",LoyaltyPointsEarned.toString());
+        localStorage.setItem("LoyaltyPoints",LoyaltyPointsEarned.toString());
     }
 
     location.reload(); // To reset all the inputs.
@@ -159,8 +159,8 @@ function AddToFav(){
     favourite.start = start;
     favourite.currentcost = currentcost;
 
-    sessionStorage.clear();
-    sessionStorage.setItem("order",JSON.stringify(favourite));
+    localStorage.clear();
+    localStorage.setItem("order",JSON.stringify(favourite));
 
     document.getElementById("taxi_type_display").value = "";
     document.getElementById("fuel_type_display").value = "";
@@ -172,7 +172,7 @@ function AddToFav(){
 
 function OrderFav(){
 
-    let order = sessionStorage.getItem("order");
+    let order = localStorage.getItem("order");
     let test = JSON.parse(order);
 
     document.getElementById("taxi_type_display").value = test.taxitype;
@@ -185,6 +185,6 @@ function OrderFav(){
 
 function CheckLoyalty() {
 
-    let LoyaltyBal = sessionStorage.getItem('LoyaltyPoints');
+    let LoyaltyBal = localStorage.getItem('LoyaltyPoints');
     alert("You have " + LoyaltyBal + " points remaining");
 }
